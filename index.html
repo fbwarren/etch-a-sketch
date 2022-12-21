@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Etch-a-Sketch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-column">
+      <button onclick="clearScreen()">Clear Screen</button>
+      <button onclick="toggleGrid()">Toggle Grid</button>
+      Number of pixels: <input type="range" min="4" max="32" value="16" onchange="newGrid(this.value)">
+    </div>
+    <div class="right-column"></div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
