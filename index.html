@@ -10,18 +10,22 @@
 <body>
   <div class="container">
     <div class="left-column">
-      <div class="top-buttons">
+      <div class="first">
         <button onclick="clearScreen()">Clear Screen</button>
         <button onclick="toggleGrid()">Toggle Grid</button>
       </div>
-      <div class="middle-buttons">
+      <div class="second">
         <button onclick="changeMode('regular')">Regular Mode</button>
         <button onclick="changeMode('eraser')">Eraser</button>
         <button onclick="changeMode('fill')">Fill</button>
         <button onclick="changeMode('shading')">Shading</button>
         <button onclick="changeMode('rainbow')">Rainbow Mode</button>
       </div>
-      <div class="slider">
+      <div class="color-container">
+        <input oninput="changeColor(this.value); changeMode('regular')" type="color">
+      </div>
+      <div class="third">
+        <div class = "text"></div>
         <input type="range" min="4" max="32" value="16" onchange="redrawGrid(this.value)">
       </div>
       </div>
