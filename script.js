@@ -1,5 +1,11 @@
+// https://stackoverflow.com/questions/5560248/
+function RGB_Log_Shade (p, c) {
+    var i = parseInt, r = Math.round, [a, b, c, d] = c.split(","), P = p < 0, t = P ? 0 : p * 255 ** 2, P = P ? 1 + p : 1 - p;
+    return "rgb" + (d ? "a(" : "(") + r((P * i(a[3] == "a" ? a.slice(5) : a.slice(4)) ** 2 + t) ** 0.5) + "," + r((P * i(b) ** 2 + t) ** 0.5) + "," + r((P * i(c) ** 2 + t) ** 0.5) + (d ? "," + d : ")");
+}
+
 function clearScreen() {
-    cells.forEach(cell => cell.style.backgroundColor = '#FFFFFF');
+    cells.forEach(cell => cell.style.backgroundColor = 'rgb(255, 255, 255');
 }
 
 function toggleGrid() {
@@ -19,14 +25,19 @@ function colorCell(e) {
                 this.style.backgroundColor = color;
                 break;
             case 'eraser':
-                this.style.backgroundColor = '#FFFFFF';
+                this.style.backgroundColor = 'rgb(255, 255, 255)';
                 break;
             case 'rainbow':
-                let randomColor = Math.floor(Math.random() * 16777215).toString(16);
-                this.style.backgroundColor = '#' + randomColor;
+                let random = () => Math.round(Math.random() * 255).toString();
+                let rgb = [random(), random(), random()];
+                this.style.backgroundColor = 'rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')';
                 break;
             case 'shading':
-                this.style.backgroundColor = '#FFFFFF';
+                let prevColor = this.style.backgroundColor;
+                this.style.backgroundColor = RGB_Log_Shade(-0.17, prevColor);
+                break;
+            case 'fill':
+                fill(this, color);
                 break;
         }
     }
@@ -51,6 +62,7 @@ function drawGrid(v) {
             let cell = document.createElement('div');
             cell.className = 'cell'
             cell.id = `${i*v + j}`;
+            cell.style.backgroundColor = 'rgb(255, 255, 255)'
             cell.style.outline = 'black solid 1px';
             cell.style.flex = '1';
             cell.style.aspectRatio = '1/1';
@@ -64,10 +76,11 @@ function drawGrid(v) {
         cell.addEventListener('mouseover', colorCell);
         cell.addEventListener('mousedown', colorCell);
     });
-    slider.textContent = `${v} x ${v}`;
+
+    slider.appendChild(document.createTextNode(`${v} x ${v}`));
 }
 
-let color = '#000000';
+let color = 'rgb(0, 0, 0)';
 let mode = 'regular';
 
 drawGrid(16);

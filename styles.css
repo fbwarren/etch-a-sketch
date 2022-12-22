@@ -2,13 +2,16 @@
     display: flex;
     gap: 5px;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    border: solid;
 }
 
 .left-column {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 5px;
+    border: solid;
 }
 
 .right-column {
@@ -16,6 +19,16 @@
     flex-basis: 500px;
 }
 
+.top-buttons,
+.middle-buttons,
+.bottom-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .slider {
+    display: flex;
+    flex-direction: column-reverse;
     text-align: center;
 }

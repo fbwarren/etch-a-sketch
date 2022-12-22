@@ -10,14 +10,20 @@
 <body>
   <div class="container">
     <div class="left-column">
-      <button onclick="clearScreen()">Clear Screen</button>
-      <button onclick="toggleGrid()">Toggle Grid</button>
-      <button onclick="changeMode('eraser')">Eraser</button>
-      <button onclick="changeMode('regular')">Regular Mode</button>
-      <button onclick="changeMode('rainbow')">Rainbow Mode</button>
-      <button onclick="changeMode('shading')">Shading Mode</button>
-      <div class="slider"></div>
-      <input type="range" min="4" max="32" value="16" onchange="redrawGrid(this.value)">
+      <div class="top-buttons">
+        <button onclick="clearScreen()">Clear Screen</button>
+        <button onclick="toggleGrid()">Toggle Grid</button>
+      </div>
+      <div class="middle-buttons">
+        <button onclick="changeMode('regular')">Regular Mode</button>
+        <button onclick="changeMode('eraser')">Eraser</button>
+        <button onclick="changeMode('fill')">Fill</button>
+        <button onclick="changeMode('shading')">Shading</button>
+        <button onclick="changeMode('rainbow')">Rainbow Mode</button>
+      </div>
+      <div class="slider">
+        <input type="range" min="4" max="32" value="16" onchange="redrawGrid(this.value)">
+      </div>
       </div>
     <div class="right-column"></div>
   </div>
