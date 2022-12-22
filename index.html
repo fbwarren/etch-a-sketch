@@ -12,8 +12,13 @@
     <div class="left-column">
       <button onclick="clearScreen()">Clear Screen</button>
       <button onclick="toggleGrid()">Toggle Grid</button>
-      Number of pixels: <input type="range" min="4" max="32" value="16" onchange="newGrid(this.value)">
-    </div>
+      <button onclick="changeMode('eraser')">Eraser</button>
+      <button onclick="changeMode('regular')">Regular Mode</button>
+      <button onclick="changeMode('rainbow')">Rainbow Mode</button>
+      <button onclick="changeMode('shading')">Shading Mode</button>
+      <div class="slider"></div>
+      <input type="range" min="4" max="32" value="16" onchange="redrawGrid(this.value)">
+      </div>
     <div class="right-column"></div>
   </div>
   <script src="./script.js"></script>
