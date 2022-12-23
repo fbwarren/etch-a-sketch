@@ -78,7 +78,6 @@ function fill(start) {
     let prevColor = start.style.backgroundColor;
     const stack = [start.id];
 
-    console.log(`Cell I clicked: ${start.id}`);
     while (stack.length) {
         let cell = stack.pop();
         cells[cell].style.backgroundColor = color;
@@ -88,8 +87,6 @@ function fill(start) {
             if (0 <= row+dirs[i] && row+dirs[i] < size &&
                 0 <= col+dirs[i+1] && col+dirs[i+1] < size &&
                 cells[neighborCell].style.backgroundColor == prevColor) {
-                    console.log(`Valid neighbor cell: ${neighborCell}`);
-                    console.log(`row: ${row} col: ${col} size: ${size}`);
                     stack.push(neighborCell);
             }
         }
