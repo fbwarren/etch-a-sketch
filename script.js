@@ -33,8 +33,19 @@ function redrawGrid(e) {
     cells.forEach(cell => cell.remove());
     let sliderText = document.querySelector('.text')
     sliderText.removeChild(sliderText.childNodes[0]);
-    drawGrid(e);
+    size = e;
+    drawGrid(size);
     cells = document.querySelectorAll('.cell');
+}
+
+function clearScreen() {
+    cells.forEach(cell => cell.style.backgroundColor = 'rgb(255, 255, 255');
+}
+
+function toggleGrid() {
+    cells.forEach(cell => {
+        cell.style.outlineStyle = (cell.style.outlineStyle == 'solid') ? 'None' : 'solid';
+    });
 }
 
 function colorCell(e) {
@@ -56,20 +67,33 @@ function colorCell(e) {
                 this.style.backgroundColor = RGB_Log_Shade(-0.17, prevColor);
                 break;
             case 'fill':
-                fill(this, color);
+                fill(this);
                 break;
         }
     }
 }
 
-function clearScreen() {
-    cells.forEach(cell => cell.style.backgroundColor = 'rgb(255, 255, 255');
-}
+function fill(start) {
+    let dirs = [0, 1, 0, -1, 0];
+    let prevColor = start.style.backgroundColor;
+    const stack = [start.id];
 
-function toggleGrid() {
-    cells.forEach(cell => {
-        cell.style.outlineStyle = (cell.style.outlineStyle == 'solid') ? 'None' : 'solid';
-    });
+    console.log(`Cell I clicked: ${start.id}`);
+    while (stack.length) {
+        let cell = stack.pop();
+        cells[cell].style.backgroundColor = color;
+        let row = Math.floor(cell / size); col = cell % size;
+        for (let i=0; i<4; i++) {
+            let neighborCell = size * (row + dirs[i]) + (col + dirs[i + 1]);
+            if (0 <= row+dirs[i] && row+dirs[i] < size &&
+                0 <= col+dirs[i+1] && col+dirs[i+1] < size &&
+                cells[neighborCell].style.backgroundColor == prevColor) {
+                    console.log(`Valid neighbor cell: ${neighborCell}`);
+                    console.log(`row: ${row} col: ${col} size: ${size}`);
+                    stack.push(neighborCell);
+            }
+        }
+    }
 }
 
 function changeMode(newMode) {
@@ -86,7 +110,8 @@ function RGB_Log_Shade(p, c) {
     return "rgb" + (d ? "a(" : "(") + r((P * i(a[3] == "a" ? a.slice(5) : a.slice(4)) ** 2 + t) ** 0.5) + "," + r((P * i(b) ** 2 + t) ** 0.5) + "," + r((P * i(c) ** 2 + t) ** 0.5) + (d ? "," + d : ")");
 }
 
-let color = 'rgb(0, 0, 0)';
-let mode = 'regular';
-drawGrid(16);
-cells = document.querySelectorAll('.cell');
+var color = 'rgb(0, 0, 0)';
+var mode = 'regular';
+var size = 16;
+drawGrid(size);
+var cells = document.querySelectorAll('.cell');
