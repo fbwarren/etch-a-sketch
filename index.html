@@ -15,18 +15,18 @@
         <button onclick="toggleGrid()">Toggle Grid</button>
       </div>
       <div class="second">
-        <button onclick="changeMode('regular')">Regular Mode</button>
-        <button onclick="changeMode('eraser')">Eraser</button>
-        <button onclick="changeMode('fill')">Fill</button>
-        <button onclick="changeMode('shading')">Shading</button>
-        <button onclick="changeMode('rainbow')">Rainbow Mode</button>
+        <button id="regular" onclick="changeMode('regular')">Regular Mode</button>
+        <button id="eraser" onclick="changeMode('eraser')">Eraser</button>
+        <button id="fill" onclick="changeMode('fill')">Fill</button>
+        <button id="shading" onclick="changeMode('shading')">Shading</button>
+        <button id="rainbow" onclick="changeMode('rainbow')">Rainbow Mode</button>
       </div>
       <div class="color-container">
         <input oninput="changeColor(this.value);" type="color">
       </div>
       <div class="third">
         <div class = "text"></div>
-        <input type="range" min="4" max="32" value="16" onchange="redrawGrid(this.value)">
+        <input type="range" min="4" max="48" value="16" onchange="redrawGrid(this.value)">
       </div>
       </div>
     <div class="right-column"></div>

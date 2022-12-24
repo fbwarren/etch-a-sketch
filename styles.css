@@ -33,9 +33,25 @@ input[type='color'] {
     height: 100%;
 }
 
-
 .slider {
     display: flex;
     flex-direction: column-reverse;
     text-align: center;
+}
+
+button {
+    background-color: lightslategray;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.active {
+    background-color: darkslategray;
 }

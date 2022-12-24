@@ -94,7 +94,10 @@ function fill(start) {
 }
 
 function changeMode(newMode) {
+    document.querySelector('#'+mode).classList.remove("active");
     mode = newMode;
+    document.querySelector('#'+mode).classList.add("active");
+    console.log(document.querySelector('#'+mode).classList);
 }
 
 function changeColor(newColor) {
