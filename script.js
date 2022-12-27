@@ -23,7 +23,6 @@ function drawGrid(v) {
     let cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
         cell.addEventListener('mouseover', colorCell);
-        cell.addEventListener('mousedown', colorCell);
     });
 
     sliderText.appendChild(document.createTextNode(`${v} x ${v}`));
@@ -49,7 +48,7 @@ function toggleGrid() {
 }
 
 function colorCell(e) {
-    if (e.buttons == 1 || e.buttons == 3) {
+    if (e.buttons == 1) {
         switch (mode) {
             case 'regular':
                 this.style.backgroundColor = color;
