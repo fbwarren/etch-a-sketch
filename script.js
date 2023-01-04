@@ -23,6 +23,7 @@ function drawGrid(v) {
     let cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
         cell.addEventListener('mouseover', colorCell);
+        cell.addEventListener('mousedown', colorCell);
     });
 
     sliderText.appendChild(document.createTextNode(`${v} x ${v}`));
@@ -81,22 +82,21 @@ function fill(start) {
         let cell = stack.pop();
         cells[cell].style.backgroundColor = color;
         let row = Math.floor(cell / size); col = cell % size;
-        for (let i=0; i<4; i++) {
+        for (let i = 0; i < 4; i++) {
             let neighborCell = size * (row + dirs[i]) + (col + dirs[i + 1]);
-            if (0 <= row+dirs[i] && row+dirs[i] < size &&
-                0 <= col+dirs[i+1] && col+dirs[i+1] < size &&
+            if (0 <= row + dirs[i] && row + dirs[i] < size &&
+                0 <= col + dirs[i + 1] && col + dirs[i + 1] < size &&
                 cells[neighborCell].style.backgroundColor == prevColor) {
-                    stack.push(neighborCell);
+                stack.push(neighborCell);
             }
         }
     }
 }
 
 function changeMode(newMode) {
-    document.querySelector('#'+mode).classList.remove("active");
+    document.querySelector('#' + mode).classList.remove("active");
     mode = newMode;
-    document.querySelector('#'+mode).classList.add("active");
-    console.log(document.querySelector('#'+mode).classList);
+    document.querySelector('#' + mode).classList.add("active");
 }
 
 function changeColor(newColor) {

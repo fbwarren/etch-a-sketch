@@ -1,20 +1,24 @@
+.container,
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
 .container {
     display: flex;
-    gap: 5px;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
 }
 
 .left-column {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 5px;
+    margin-right: 1%;
 }
 
 .right-column {
-    flex-grow: 1;
-    flex-basis: 500px;
+    flex-basis: 66%;
 }
 
 .first,
@@ -22,6 +26,8 @@
 .third {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    margin-bottom: 30px;
 }
 
 .color-container{
